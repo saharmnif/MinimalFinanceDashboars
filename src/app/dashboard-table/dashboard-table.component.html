@@ -1,0 +1,103 @@
+<div class="dashboard-container">
+  <div class="summary-container">
+    <div class="dashboard-class">
+      Minimal Finance Dashboard
+      <button mat-flat-button class="blue-button">New Deposit</button>
+    </div>
+  </div>
+  
+  <div class="summary-container">
+    <div class="summary-text">Summary</div>
+    <mat-form-field appearance="fill" class="summary-form-field"> 
+      <mat-label>This Month</mat-label> 
+      <mat-select> 
+        <mat-option value="html">3 months</mat-option> 
+        <mat-option value="css" disabled>2 months</mat-option> 
+        <mat-option value="js">months</mat-option> 
+      </mat-select> 
+    </mat-form-field>
+  </div>
+  
+  <div class="card-container">
+    <mat-card appearance="outlined" class="card">
+      <mat-card-header>
+        <div class="header-content">
+          <img src="assets/Icon-bg2.png" alt="Payments" class="card-icon">
+          <mat-card-title>Payments</mat-card-title>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="card-text"><span class="amount">$4,500</span></div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card appearance="outlined" class="card">
+      <mat-card-header>
+        <div class="header-content">
+          <img src="assets/Icon-bg.png" alt="Requests" class="card-icon">
+          <mat-card-title>Requests</mat-card-title>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="card-text"><span class="amount">$1,200</span></div>
+      </mat-card-content>
+    </mat-card>
+    
+    <mat-card appearance="outlined" class="card">
+      <mat-card-header>
+        <div class="header-content">
+          <img src="assets/Icon-bg3.png" alt="Subscriptions" class="card-icon">
+          <mat-card-title>Subscriptions</mat-card-title>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="card-text"><span class="amount">$4,500</span></div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="container">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="time">
+        <th mat-header-cell *matHeaderCellDef> Time </th>
+        <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="amountSent">
+        <th mat-header-cell *matHeaderCellDef> Amount Sent </th>
+        <td mat-cell *matCellDef="let element"> {{element.amountSent | currency}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fee">
+        <th mat-header-cell *matHeaderCellDef> Fee </th>
+        <td mat-cell *matCellDef="let element"> {{element.fee | currency}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="amountReceived">
+        <th mat-header-cell *matHeaderCellDef> Amount Received </th>
+        <td mat-cell *matCellDef="let element"> {{element.amountReceived | currency}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <mat-paginator [length]="totalRecords" [pageSize]="pageSize" (page)="onPaginateChange($event)">
+  </mat-paginator>
+</div>
