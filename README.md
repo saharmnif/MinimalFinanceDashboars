@@ -1,1 +1,1 @@
-# MinimalFinanceDashboars
+# MinimalFinanceDashboard
